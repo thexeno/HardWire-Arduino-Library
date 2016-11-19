@@ -32,7 +32,7 @@ Basically you can follow the official [Wire guide](https://www.arduino.cc/en/Ref
 Here will be described only the differences between the original *Wire* and the *HardWire*, everything else is compliant with the guide linked above to the Wire.
 
 ### Handlers
-This "hardened" (or more "hardware", "hardwired") version also supports the following handlers assigned during the initialization (are listed also the official ones). **Note that the use of the additional HardWire handlers is *never* a mandatory.**
+This "hardened" (or more "hardware", "hardwired") version also supports the following handlers assigned during the initialization (are listed also the official ones). **Note that the use of the additional HardWire handlers is *never*  mandatory.**
 
 - ***Officials from original Wire***
 
