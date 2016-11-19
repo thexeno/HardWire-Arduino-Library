@@ -19,7 +19,7 @@ the user can take a custom action in the following I2C states:
 
 As a result, the user can take action at each step, in real time, of the I2C bus cycle where an example is depicted here below:
 
-![alt tag](https://enricosanino.files.wordpress.com/2016/11/command.gif)
+   ![alt tag](https://enricosanino.files.wordpress.com/2016/11/command.gif)
 
 ## How to use it
 
@@ -65,8 +65,8 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
  i.e. void myHandler()
  ```
  
- 
- ### Initialization
+
+### Initialization
  
  This version supports a particular mode that shall be notified in the init. If omitted, it is initialized as the normal Wire.
 
