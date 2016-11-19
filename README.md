@@ -72,11 +72,6 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
  
  This version supports a particular mode that shall be notified in the init. If omitted, it is initialized as the normal Wire.
 
-- ***Officials from original Wire***
-
- - **Wire.begin()** -> join the bus as a Master
- - **Wire.begin(slaveAddress)** -> join the bus as a Slave
- 
 - ***New in the HardWire***
 
  - **Wire.begin(slaveAddress, mode)** -> join the bus as a Slave and
@@ -84,5 +79,11 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
     -> if **mode = HARD_WIRE_MODE**, will be supported all the additional handlers, with an undefined (vitually infinite) number of read/write cycles, as any I2C slave device would do.
  
      -> if **mode = NORMAL_MODE**, will be supported all the additional handlers, but when the shared buffer is full, it needs to be flushed or read before accepting any new incoming byte: this behavior is the same as the Wire library.
+
+- ***Officials from original Wire***
+
+ - **Wire.begin()** -> join the bus as a Master
+ - **Wire.begin(slaveAddress)** -> join the bus as a Slave (additional HardWire handlers are still supported as in **NORMAL_MODE**)
+ 
  
  
