@@ -1,5 +1,7 @@
 # HardWire Arduino Library V1.0
 
+*Licensing information is attached on the header of each file.*
+
 This is an I2C Arduino library, *completely equivalent* to the Arduino Wire lib, but with more functionality. This gives more control 
 at the lower layer of the I2C protocol, without affecting the simplicity of the original library.
 
