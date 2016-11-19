@@ -32,7 +32,7 @@ Basically you can follow the official [Wire guide](https://www.arduino.cc/en/Ref
 Here will be described only the differences between the original *Wire* and the *HardWire*, everything else is compliant with the guide linked above to the Wire.
 
 ### Handlers
-This "hardened" (or more "hardware", "hardwired") version also supports the following handlers assigned during the initialization (are listed also the official ones):
+This "hardened" (or more "hardware", "hardwired") version also supports the following handlers assigned during the initialization (are listed also the official ones). **Note that the use of the additional HardWire handlers is *never* a mandatory.**
 
 - ***Officials from original Wire***
 
@@ -79,6 +79,8 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
     -> if **mode = HARD_WIRE_MODE**, will be supported all the additional handlers, with an undefined (vitually infinite) number of read/write cycles, as any I2C slave device would do.
  
      -> if **mode = NORMAL_MODE**, will be supported all the additional handlers, but when the shared buffer is full, it needs to be flushed or read before accepting any new incoming byte: this behavior is the same as the Wire library.
+     
+
 
 - ***Officials from original Wire***
 
