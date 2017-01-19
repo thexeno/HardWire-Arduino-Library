@@ -1,4 +1,4 @@
-# HardWire Arduino Library V1.0
+# HardWire Arduino Library V1.0.1
 
 *Licensing information is attached on the header of each file.*
 
