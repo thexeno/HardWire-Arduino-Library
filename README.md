@@ -28,7 +28,7 @@ As a result, the user can take action at each step, in real time, of the I2C bus
 The HardWire lib instantiates a **Wire** object, so that if in the code were previously used the Wire, no changes are required, except for the header, which shall be "HardWire.h" instead of "Wire.h".
 When referring to the "data buffer" or "shared buffer", it is intended the buffer handled by the Wire, accessed only using the API from the Wire or HardWire library, which are the same.
 
-Basically you can follow the official [Wire guide](https://www.arduino.cc/en/Reference/Wire). 
+Basically you can follow the official [Wire guide](https://www.arduino.cc/en/Reference/Wire), but also [another description ofthe HardWire here](https://enricosanino.wordpress.com/2016/11/19/hardwire-the-enhanced-arduino-wire-library/). 
 Here will be described only the differences between the original *Wire* and the *HardWire*, everything else is compliant with the guide linked above to the Wire.
 
 ### Handlers
