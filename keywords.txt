@@ -6,8 +6,8 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-HARD_WIRE_MODE KEYWORD1
-NORMAL_MODE KEYWORD1
+HARD_WIRE_MODE	KEYWORD1
+NORMAL_MODE	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -20,11 +20,11 @@ endTransmission	KEYWORD2
 requestFrom	KEYWORD2
 onReceive	KEYWORD2
 onRequest	KEYWORD2
-onReceiveAdx KEYWORD2
-onReceiveData KEYWORD2
-onReceiveDataNack KEYWORD2
-onRequestData KEYWORD2
-onRequestDataNack KEYWORD2
+onReceiveAdx	KEYWORD2
+onReceiveData	KEYWORD2
+onReceiveDataNack	KEYWORD2
+onRequestData	KEYWORD2
+onRequestDataNack	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
