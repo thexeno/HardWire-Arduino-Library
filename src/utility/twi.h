@@ -44,6 +44,7 @@
   void twi_init_circular(void);
   void twi_disable(void);
   void twi_setAddress(uint8_t);
+  void twi_setAddressBitMask(uint8_t mask);
   void twi_setFrequency(uint32_t);
   uint8_t twi_readFrom(uint8_t, uint8_t*, uint8_t, uint8_t);
   uint8_t twi_writeTo(uint8_t, uint8_t*, uint8_t, uint8_t, uint8_t);

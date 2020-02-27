@@ -44,7 +44,7 @@ class TwoWire : public Stream
     static uint8_t txBuffer[];
     static uint8_t txBufferIndex;
     static uint8_t txBufferLength;
-	static uint8_t modality;
+	  static uint8_t modality;
 	
     static uint8_t transmitting;
     static void (*user_onRequest)(void);
@@ -57,7 +57,7 @@ class TwoWire : public Stream
 
     static void onRequestService(void);
     static void onReceiveService(uint8_t*, int);
-	static void onReceiveDataService(uint8_t data);
+	  static void onReceiveDataService(uint8_t data);
     static void onReceiveDataNackService(void);
     static void onReceiveAdxService(void);
     static uint8_t onRequestDataService(void);
@@ -70,6 +70,8 @@ class TwoWire : public Stream
     void begin(int);
     void begin(uint8_t address, uint8_t mode);
     void begin(int address, int mode);
+    void addressBitMask(uint8_t mask);
+    void addressBitMask(int mask);
     void end();
     void setClock(uint32_t);
     void beginTransmission(uint8_t);

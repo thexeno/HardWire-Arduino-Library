@@ -25,6 +25,7 @@ onReceiveData	KEYWORD2
 onReceiveDataNack	KEYWORD2
 onRequestData	KEYWORD2
 onRequestDataNack	KEYWORD2
+addressBitMask	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

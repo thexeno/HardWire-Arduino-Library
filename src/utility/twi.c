@@ -147,15 +147,27 @@ void twi_disable(void)
 }
 
 /* 
- * Function twi_slaveInit
- * Desc     sets slave address and enables interrupt
- * Input    none
+ * Function twi_setAddress
+ * Desc     sets slave address and enables interrupt. shift is done in the function to match the 7bit alignment
+ * Input    The slave address
  * Output   none
  */
 void twi_setAddress(uint8_t address)
 {
   // set twi slave address (skip over TWGCE bit)
   TWAR = address << 1;
+}
+
+/* 
+ * Function twi_setAddressMask
+ * Desc     sets slave address mask. A bit set in the mask (masked bit) will ignore the bit check in the own slave address, hence only using the un-maskled bits
+ *          to exclude the address match. shift is done in the function to match the 7bit alignment
+ * Input    The mask bit which are not evaluated by the hardware during the address match check
+ * Output   none
+ */
+void twi_setAddressBitMask(uint8_t mask)
+{
+  TWAMR = mask << 1;
 }
 
 /* 

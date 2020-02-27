@@ -91,7 +91,7 @@ void TwoWire::begin(uint8_t address, uint8_t mode)
   if (mode == HARD_WIRE_MODE)
   {
     twi_init_circular();
-	modality = 1;
+	  modality = 1;
   }
   else
     twi_init();
@@ -129,6 +129,16 @@ void TwoWire::end(void)
 void TwoWire::setClock(uint32_t clock)
 {
   twi_setFrequency(clock);
+}
+
+void TwoWire::addressBitMask(uint8_t mask)
+{
+  twi_setAddressBitMask(mask);
+}
+
+void TwoWire::addressBitMask(int mask)
+{
+  addressBitMask((uint8_t)mask);
 }
 
 uint8_t TwoWire::requestFrom(uint8_t address, uint8_t quantity, uint32_t iaddress, uint8_t isize, uint8_t sendStop)
