@@ -1,4 +1,4 @@
-# HardWire Arduino Library V1.0.2-a
+# HardWire Arduino Library V1.0.3
 
 *Licensing information is attached on the header of each file.*
 
@@ -62,11 +62,11 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
  ```
  i.e. unsigned char myHandler()
  ```
- - **Wire.onRequestDataNack(handler)** -> handler takes not parameters and returns void. Used when the master still requires data which is not available from the shared buffer. It is done transparently in the official Wire.
+ - **Wire.onRequestDataNack(handler)** -> handler takes no parameters and returns void. Used when the master still requires data which is not available from the shared buffer. It is done transparently in the official Wire.
  ```
  i.e. void myHandler()
  ```
- 
+
 
 ### Initialization
  
@@ -80,6 +80,7 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
  
      -> if **mode = NORMAL_MODE**, will be supported all the additional handlers, but when the shared buffer is full, it needs to be flushed or read before accepting any new incoming byte: this behavior is the same as the Wire library.
      
+ - **Wire.addressBitMask(mask)** -> takes the mask as byte or int, same format of I2C address (7 bit). Used to set which bit will be ignored by the I2C hardware when evaluating the address match. I.e.: if address is 0x09 and mask is 0x04, slave I2C will acknowledge both 0x09 and 0x0D, because the bit in the value 0x04 allow to be valid either values of the bits in the third position from the LSB (bit in third position is 0x04).
 
 
 - ***Officials from original Wire***
