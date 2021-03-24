@@ -50,7 +50,7 @@ void (*TwoWire::user_onReceive)(int);
 void (*TwoWire::user_onReceiveAdx)(void);
 void (*TwoWire::user_onReceiveDataNack)(void);
 void (*TwoWire::user_onReceiveData)(int);
-uint8_t (*TwoWire::user_onRequestData)(void);
+uint8_t (*TwoWire::user_onRequestData)(void) = NULL;
 void (*TwoWire::user_onRequestDataNack)(void);
 
 // Constructors ////////////////////////////////////////////////////////////////
@@ -465,6 +465,7 @@ void TwoWire::onRequest( void (*function)(void) )
 void TwoWire::onRequestData( uint8_t (*function)(void) )
 {
   user_onRequestData = function;
+  twi_onRequestDataAssigned();
 }
 
 void TwoWire::onRequestDataNack( void (*function)(void) )

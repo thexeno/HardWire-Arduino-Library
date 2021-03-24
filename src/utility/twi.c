@@ -45,8 +45,9 @@ static volatile uint8_t twi_sendStop;   // should the transaction end with a sto
 static volatile uint8_t twi_inRepStart; // in the middle of a repeated start
 static volatile uint8_t stTwi[255];
 static volatile uint8_t i = 0;
+static volatile uint8_t flag_onRequestDataAssigned = 0;
 
-static void (*twi_onSlaveTransmit)(void);
+static void (*twi_onSlaveTransmit)(void); // no need to put to NULL, will always be assigned to the callback in HardWire
 static void (*twi_onSlaveReceive)(uint8_t *, int);
 static void (*twi_onSlaveReceiveData)(uint8_t);
 static void (*twi_onSlaveReceiveAddress)(void);
@@ -181,6 +182,18 @@ void twi_setFrequency(uint32_t frequency)
   SCL Frequency = CPU Clock Frequency / (16 + (2 * TWBR))
   note: TWBR should be 10 or higher for master mode
   It is 72 for a 16mhz Wiring board with 100kHz TWI */
+}
+
+/* 
+ * Function twi_onRequestDataAssigned
+ * Desc     notify the state machine we have a real HardWire callback set for the request data
+ *          Is needed as there is functionality shared with the standard Wire
+ * Input    void
+ * Output   void
+ */
+void twi_onRequestDataAssigned(void)
+{
+  flag_onRequestDataAssigned = 1;
 }
 
 /* 
@@ -667,6 +680,9 @@ ISR(TWI_vect)
   // Slave Transmitter
   case TW_ST_SLA_ACK:          // addressed, returned ack
   case TW_ST_ARB_LOST_SLA_ACK: // arbitration lost, returned ack
+    
+    // enter slave transmitter mode
+    twi_state = TWI_STX;
     // ready the tx buffer index for iteration
     twi_txBufferIndex = 0;
     // set tx buffer length to be zero, to verify if user changes it
@@ -680,7 +696,7 @@ ISR(TWI_vect)
       twi_txBufferLength = 1;
       twi_txBuffer[0] = 0x00;
     }
-    if (!twi_onSlaveTransmitData) // good to have - TODO documentation GitHub
+    if (!flag_onRequestDataAssigned)    //!twi_onSlaveTransmitData) // good to have - TODO documentation GitHub
     {
       // transmit first byte from buffer, fall
       TWDR = twi_txBuffer[twi_txBufferIndex++];
@@ -689,8 +705,6 @@ ISR(TWI_vect)
     {
       TWDR = twi_onSlaveTransmitData();
     }
-    // enter slave transmitter mode
-    twi_state = TWI_STX;
 
     // if there is more to send, ack, otherwise nack
     if (twi_txBufferIndex < twi_txBufferLength)
@@ -712,7 +726,7 @@ ISR(TWI_vect)
     }
     break;
   case TW_ST_DATA_ACK: // byte sent, ack returned
-    if (!twi_onSlaveTransmitData)
+    if (!flag_onRequestDataAssigned) //if (!twi_onSlaveTransmitData)
     {
       // if another function is not defined, keep the default behavior for the twi
       // copy data to output register
