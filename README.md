@@ -2,21 +2,21 @@
 
 *Licensing information is attached on the header of each file.*
 
-This is an I2C Arduino library, equivalent to the Arduino Wire lib, but with more functionality. This gives more control 
+This is an I2C Arduino library, *completely equivalent* to the Arduino Wire lib, but with more functionality. This gives more control 
 at the lower layer of the I2C protocol, without affecting the simplicity of the original library.
 
 
-With the conventional Wire library, you can take action only after the STOP or when addressed as a Slave Transmit. In Hard Wire,
+With the conventional Wire library, you can take action only after the STOP or when addressed as a  Slave Transmit. In Hard Wire,
 the user can take a custom action in the following I2C states:
 
 - Addressed in slave read mode
 - Addressed in slave write mode
-- ACK received in slave mode after every byte sent
-- NACK received in slave mode after byte is sent
-- ACK sent in slave mode
-- START received in slave mode
-- STOP received in slave mode
-- RESTART received in slave mode
+- ACK received after every byte sent
+- NACK received after byte is sent
+- ACK sent
+- START
+- STOP
+- RESTART
 
 
 As a result, the user can take action at each step, in real time, of the I2C bus cycle where an example is depicted here below:
@@ -82,11 +82,6 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
      
  - **Wire.addressBitMask(mask)** -> takes the mask as byte or int, same format of I2C address (7 bit). Used to set which bit will be ignored by the I2C hardware when evaluating the address match. I.e.: if address is 0x09 and mask is 0x04, slave I2C will acknowledge both 0x09 and 0x0D, because the bit in the value 0x04 allow to be valid either values of the bits in the third position from the LSB (bit in third position is 0x04).
 
-### Notes
-
-When registering the **Wire.onRequestData(handler)** handler, the slave transmit buffer will not be utilized. This means that in slave mode, with onRequestData() registered, writing to Wire.write() will not send anything to master when the master will request. The only way to send data to master while in this mode, is to use the retuned value from onRequestData(). 
-
-Reading the data from the master in this mode will stay as per Wire library. :)
 
 - ***Officials from original Wire***
 
