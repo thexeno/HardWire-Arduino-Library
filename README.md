@@ -1,4 +1,4 @@
-# HardWire Arduino Library V1.0.3
+# HardWire Arduino Library V2.0
 
 *Licensing information is attached on the header of each file.*
 
@@ -85,7 +85,6 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
 ### Notes
 
 When registering the **Wire.onRequestData(handler)** handler, the slave transmit buffer will not be utilized. This means that in slave mode, with onRequestData() registered, writing to Wire.write() will not send anything to master when the master will request. The only way to send data to master while in this mode, is to use the retuned value from onRequestData(). 
-
 Reading the data from the master in this mode will stay as per Wire library. :)
 
 - ***Officials from original Wire***
