@@ -72,7 +72,7 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
  
  This version supports a particular mode that shall be notified in the init. If omitted, it is initialized as the normal Wire.
 
-- ***New in the HardWire***
+***New in the HardWire***
 
  - **Wire.begin(slaveAddress, mode)** -> join the bus as a Slave and
  
@@ -82,15 +82,15 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
      
  - **Wire.addressBitMask(mask)** -> takes the mask as byte or int, same format of I2C address (7 bit). Used to set which bit will be ignored by the I2C hardware when evaluating the address match. I.e.: if address is 0x09 and mask is 0x04, slave I2C will acknowledge both 0x09 and 0x0D, because the bit in the value 0x04 allow to be valid either values of the bits in the third position from the LSB (bit in third position is 0x04).
 
-### Notes
 
-When registering the **Wire.onRequestData(handler)** handler, the slave transmit buffer will not be utilized. This means that in slave mode, with onRequestData() registered, writing to Wire.write() will not send anything to master when the master will request. The only way to send data to master while in this mode, is to use the retuned value from onRequestData(). 
-Reading the data from the master in this mode will stay as per Wire library. :)
-
-- ***Officials from original Wire***
+***Officials from original Wire***
 
  - **Wire.begin()** -> join the bus as a Master
  - **Wire.begin(slaveAddress)** -> join the bus as a Slave (additional HardWire handlers are still supported as in **NORMAL_MODE**)
  
  
- 
+ ### Notes
+
+When registering the **Wire.onRequestData(handler)** handler, the slave transmit buffer will not be utilized. This means that in slave mode, with **onRequestData()** registered, writing to **Wire.write()** will not send anything to master when the master will request. The only way to send data to master while in this mode, is to use the retuned value from onRequestData(). 
+
+Reading the data from the master in this mode will stay as per Wire library. :)
