@@ -84,10 +84,11 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
 
 ### Notes
 
-When registering the **Wire.onRequestData(handler)** handler, the slave transmit buffer will not be utilized. This means that in slave mode, with onRequestData() registered, writing to Wire.write() will not send anything to master when the master will request. The only way to send data to master while in this mode, is to use the retuned value from onRequestData(). 
+When registering the **Wire.onRequestData(handler)** handler, the slave transmit buffer will not be utilized. This means that in slave mode, with **onRequestData()** registered, writing to **Wire.write()** will not send anything to master when the master will request. The only way to send data to master while in this mode, is to use the retuned value from onRequestData(). 
+
 Reading the data from the master in this mode will stay as per Wire library. :)
 
-- ***Officials from original Wire***
+***Officials from original Wire***
 
  - **Wire.begin()** -> join the bus as a Master
  - **Wire.begin(slaveAddress)** -> join the bus as a Slave (additional HardWire handlers are still supported as in **NORMAL_MODE**)
