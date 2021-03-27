@@ -34,7 +34,7 @@ Here will be described only the differences between the original *Wire* and the 
 ### Handlers
 This "hardened" (or more "hardware", "hardwired") version also supports the following handlers assigned during the initialization (are listed also the official ones). **Note that the use of the additional HardWire handlers is *never*  mandatory.**
 
- ***Officials from original Wire***
+- ***Officials from original Wire***
 
  - **Wire.onReceive(myHandler)** -> handler takes the number of bytes received and returns void. In the handler the data buffer can be read, since the master has terminated the communication
  ```
@@ -44,7 +44,7 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
  ```
  i.e. void myHandler()
  ```
- ***New in the HardWire***
+- ***New in the HardWire***
 
  - **Wire.onReceiveData(myHandler)** -> handler takes as a parameter the last received byte and returns void. It is used for the slave runtime computation, but the data buffer is still filled with that byte, as the official Wire does this transparently
  ```
@@ -72,7 +72,7 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
  
  This version supports a particular mode that shall be notified in the init. If omitted, it is initialized as the normal Wire.
 
- ***New in the HardWire***
+- ***New in the HardWire***
 
  - **Wire.begin(slaveAddress, mode)** -> join the bus as a Slave and
  
@@ -85,10 +85,9 @@ This "hardened" (or more "hardware", "hardwired") version also supports the foll
 ### Notes
 
 When registering the **Wire.onRequestData(handler)** handler, the slave transmit buffer will not be utilized. This means that in slave mode, with onRequestData() registered, writing to Wire.write() will not send anything to master when the master will request. The only way to send data to master while in this mode, is to use the retuned value from onRequestData(). 
-
 Reading the data from the master in this mode will stay as per Wire library. :)
 
- ***Officials from original Wire***
+- ***Officials from original Wire***
 
  - **Wire.begin()** -> join the bus as a Master
  - **Wire.begin(slaveAddress)** -> join the bus as a Slave (additional HardWire handlers are still supported as in **NORMAL_MODE**)
